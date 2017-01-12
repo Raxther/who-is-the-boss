@@ -56,15 +56,30 @@ angular.module('whoIsTheBestApp')
 		});
 	};
 
-	$scope.gauche = left;
 
 	$scope.pick_left = function(){
-		console.log(left.name + " + 1");
+		var test = rootRef.child('Characters').orderByChild('name').equalTo(left.name).on('child_added', function(snapshot) {
+		    firebase.database().ref('Characters/' + snapshot.getKey()).update({
+				score : left.score + 1
+			  });
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+		console.log(test)
+
 		refresh();
 	};
 
 	$scope.pick_right = function(){
-		console.log(right.name + " + 1");
+		var test = rootRef.child('Characters').orderByChild('name').equalTo(right.name).on('child_added', function(snapshot) {
+		    firebase.database().ref('Characters/' + snapshot.getKey()).update({
+				score : right.score + 1
+			  });
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+		console.log(test)
+
 		refresh();
 	};
 
