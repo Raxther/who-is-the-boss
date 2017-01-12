@@ -60,11 +60,21 @@ angular.module('whoIsTheBestApp')
 	$scope.pick_left = function(){
 		var test = rootRef.child('Characters').orderByChild('name').equalTo(left.name).on('child_added', function(snapshot) {
 		    firebase.database().ref('Characters/' + snapshot.getKey()).update({
-				score : left.score + 1
+				score : left.score + 1,
+				appearance : left.appearance + 1
 			  });
 		}, function (errorObject) {
 		  console.log("The read failed: " + errorObject.code);
 		});
+
+		var test = rootRef.child('Characters').orderByChild('name').equalTo(right.name).on('child_added', function(snapshot) {
+		    firebase.database().ref('Characters/' + snapshot.getKey()).update({
+				appearance : right.appearance + 1
+			  });
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+
 		console.log(test)
 
 		refresh();
@@ -73,7 +83,16 @@ angular.module('whoIsTheBestApp')
 	$scope.pick_right = function(){
 		var test = rootRef.child('Characters').orderByChild('name').equalTo(right.name).on('child_added', function(snapshot) {
 		    firebase.database().ref('Characters/' + snapshot.getKey()).update({
-				score : right.score + 1
+				score : right.score + 1,
+				appearance : right.appearance + 1
+			  });
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+
+		var test = rootRef.child('Characters').orderByChild('name').equalTo(left.name).on('child_added', function(snapshot) {
+		    firebase.database().ref('Characters/' + snapshot.getKey()).update({
+				appearance : left.appearance + 1
 			  });
 		}, function (errorObject) {
 		  console.log("The read failed: " + errorObject.code);
