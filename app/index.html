@@ -41,6 +41,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#!/choose">The game</a></li>
+              <li><a ng-href="#!/addnew">Add new Character</a></li>
               <li><a ng-href="#!/about">About</a></li>
             </ul>
           </div>
@@ -91,7 +92,11 @@
 <script>
   // Initialize Firebase
   var config = {
-
+    apiKey: "AIzaSyAaK2HbQ_viNm1W-M60BJFHx7yuHSR0HSE",
+    authDomain: "who-is-the-boss.firebaseapp.com",
+    databaseURL: "https://who-is-the-boss.firebaseio.com",
+    storageBucket: "who-is-the-boss.appspot.com",
+    messagingSenderId: "722574415759"
   };
   firebase.initializeApp(config);
 var rootRef = firebase.database().ref();
@@ -105,6 +110,7 @@ var rootRef = firebase.database().ref();
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/choose.js"></script>
+        <script src="scripts/controllers/addnew.js"></script>
         <!-- endbuild -->
 </body>
 </html>

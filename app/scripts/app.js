@@ -36,6 +36,11 @@ angular
         controller: 'ChooseCtrl',
         controllerAs: 'choose'
       })
+      .when('/addnew', {
+        templateUrl: 'views/addnew.html',
+        controller: 'AddnewCtrl',
+        controllerAs: 'addnew'
+      })
       .otherwise({
         redirectTo: '/'
       });
